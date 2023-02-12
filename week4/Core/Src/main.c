@@ -110,10 +110,12 @@ int main(void)
     /* USER CODE BEGIN 3 */
 	  static uint32_t timestamp=0;
 	  	  if(HAL_GetTick()>=timestamp){
-	 OddData=(adcRawData[1]+adcRawData[3]+adcRawData[5]+adcRawData[7]+adcRawData[9]
+	  		timestamp =HAL_GetTick() + 1000;
+
+	  		OddData=(adcRawData[1]+adcRawData[3]+adcRawData[5]+adcRawData[7]+adcRawData[9]
 			+adcRawData[11]+adcRawData[13]+adcRawData[15]+adcRawData[17]+adcRawData[19])/10;
 
-	 EvenData=(adcRawData[0]+adcRawData[2]+adcRawData[4]+adcRawData[6]+adcRawData[8]
+	  		EvenData=(adcRawData[0]+adcRawData[2]+adcRawData[4]+adcRawData[6]+adcRawData[8]
 			+adcRawData[10]+adcRawData[12]+adcRawData[14]+adcRawData[16]+adcRawData[18])/10;
 
 	 ADCReverse = ((OddData*3.3)/(4096))*2*1000;
