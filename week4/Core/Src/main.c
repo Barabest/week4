@@ -49,6 +49,9 @@ uint16_t adcRawData[20];
 float OddData=0;
 float EvenData=0;
 float ADCReverse=0;
+float Volt_ADC=0;
+float tempc=0;
+float tempk=0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -118,7 +121,11 @@ int main(void)
 	  		EvenData=(adcRawData[0]+adcRawData[2]+adcRawData[4]+adcRawData[6]+adcRawData[8]
 			+adcRawData[10]+adcRawData[12]+adcRawData[14]+adcRawData[16]+adcRawData[18])/10;
 
-	 ADCReverse = ((OddData*3.3)/(4096))*2*1000;
+	  		ADCReverse = ((OddData*3.3)/(4095))*2*1000;
+
+	  		Volt_ADC=(EvenData*3.3)/4095;
+	  		tempc = (Volt_ADC-0.76)/(0.0025)+25;
+	  		tempk=tempc+273.15;
 	}
   }
   /* USER CODE END 3 */
